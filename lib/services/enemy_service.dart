@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:kingofthestonejungle/notifiers/enemy_notifier.dart';
 import 'package:http/http.dart' as http;
 

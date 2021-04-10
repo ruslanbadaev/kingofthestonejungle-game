@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kingofthestonejungle/notifiers/player_notifier.dart';
 import 'package:kingofthestonejungle/notifiers/enemy_notifier.dart';
-import 'package:kingofthestonejungle/notifiers/panel_notifier.dart';
+import 'package:kingofthestonejungle/notifiers/fight_notifier.dart';
 import 'package:kingofthestonejungle/screens/menu_screen.dart';
+import 'package:kingofthestonejungle/screens/result_screen.dart';
 import 'package:kingofthestonejungle/screens/single_fight_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
@@ -21,7 +22,7 @@ Future<void> main() async {
         create: (context) => EnemyNotifier(),
       ),
       ChangeNotifierProvider(
-        create: (context) => PanelNotifier(),
+        create: (context) => FightNotifier(),
       ),
     ],
     child: MyApp(),
@@ -48,6 +49,7 @@ class MyAppState extends State<MyApp> {
       routes: {
         "/menu": (context) => MenuScreen(),
         "/single_fight": (context) => SingleFightScreen(),
+        "/result": (context) => ResultScreen(),
       },
     );
   }

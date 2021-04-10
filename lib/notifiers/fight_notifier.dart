@@ -6,7 +6,7 @@ import 'package:kingofthestonejungle/notifiers/enemy_notifier.dart';
 import 'package:kingofthestonejungle/notifiers/player_notifier.dart';
 import 'package:kingofthestonejungle/models/panel.dart';
 
-class PanelNotifier with ChangeNotifier {
+class FightNotifier with ChangeNotifier {
   Panel _panel = Panel();
 
   loadPanel() {
@@ -25,7 +25,7 @@ class PanelNotifier with ChangeNotifier {
     _panel.hidden = false;
     notifyListeners();
     Timer timer = new Timer(new Duration(seconds: 3), () async {
-      debugPrint("Print after 5 seconds");
+      debugPrint("бой...");
       _panel.hidden = true;
       Random random = new Random();
 
@@ -39,7 +39,10 @@ class PanelNotifier with ChangeNotifier {
         victory(playerNotifier, enemyNotifier);
       else if (fightResult == 'defeat') defeat(playerNotifier, enemyNotifier);
       _panel.kick = 0;
-
+      if (playerNotifier.getHealph() <= 0)
+        Navigator.pushNamed(context, "/result");
+      else if (enemyNotifier.getHealph() <= 0)
+        Navigator.pushNamed(context, "/result");
       notifyListeners();
     });
   }
@@ -73,12 +76,12 @@ class PanelNotifier with ChangeNotifier {
   }
 
   void victory(PlayerNotifier playerNotifier, EnemyNotifier enemyNotifier) {
-    enemyNotifier.getDamage(10);
+    enemyNotifier.getDamage(25);
     print('Победа');
   }
 
   void defeat(PlayerNotifier playerNotifier, EnemyNotifier enemyNotifier) {
-    playerNotifier.getDamage(10);
+    playerNotifier.getDamage(25);
     print('Поражение');
   }
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:kingofthestonejungle/components/panel/panel_view_model.dart';
 import 'package:kingofthestonejungle/models/panel.dart';
-import 'package:kingofthestonejungle/notifiers/panel_notifier.dart';
+import 'package:kingofthestonejungle/notifiers/fight_notifier.dart';
 
 class PanelView extends StatefulWidget {
   final Panel panel;
@@ -26,19 +26,19 @@ class PanelViewState extends State<PanelView> {
 
   @override
   Widget build(BuildContext context) {
-    PanelNotifier panelNotifier = Provider.of<PanelNotifier>(context);
+    FightNotifier fightNotifier = Provider.of<FightNotifier>(context);
     return Container(
       child: Row(
         children: [
           IconButton(
               icon: Icon(Icons.fingerprint_rounded),
-              onPressed: () => panelNotifier.setKick(1)),
+              onPressed: () => fightNotifier.setKick(1)),
           IconButton(
               icon: Icon(Icons.fingerprint_rounded),
-              onPressed: () => panelNotifier.setKick(2)),
+              onPressed: () => fightNotifier.setKick(2)),
           IconButton(
               icon: Icon(Icons.fingerprint_rounded),
-              onPressed: () => panelNotifier.setKick(3)),
+              onPressed: () => fightNotifier.setKick(3)),
         ],
       ),
     );

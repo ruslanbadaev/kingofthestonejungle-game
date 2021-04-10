@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kingofthestonejungle/components/player/player_view.dart';
 import 'package:kingofthestonejungle/components/enemy/enemy_view.dart';
 import 'package:kingofthestonejungle/components/panel/panel_view.dart';
-import 'package:kingofthestonejungle/notifiers/panel_notifier.dart';
+import 'package:kingofthestonejungle/notifiers/fight_notifier.dart';
 import 'package:kingofthestonejungle/notifiers/player_notifier.dart';
 import 'package:kingofthestonejungle/notifiers/enemy_notifier.dart';
 
@@ -31,9 +31,9 @@ class _MyHomePageState extends State<SingleFightScreen> {
     EnemyNotifier enemyNotifier =
         Provider.of<EnemyNotifier>(context, listen: false);
     EnemyService.getEnemyData(enemyNotifier, true);
-    PanelNotifier panelNotifier =
-        Provider.of<PanelNotifier>(context, listen: false);
-    PanelService.getPanelData(panelNotifier);
+    FightNotifier fightNotifier =
+        Provider.of<FightNotifier>(context, listen: false);
+    PanelService.getPanelData(fightNotifier);
     super.initState();
   }
 
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<SingleFightScreen> {
   Widget build(BuildContext context) {
     PlayerNotifier playerNotifier = Provider.of<PlayerNotifier>(context);
     EnemyNotifier enemyNotifier = Provider.of<EnemyNotifier>(context);
-    PanelNotifier panelNotifier = Provider.of<PanelNotifier>(context);
+    FightNotifier fightNotifier = Provider.of<FightNotifier>(context);
 
     return Scaffold(
         appBar: AppBar(
@@ -60,20 +60,20 @@ class _MyHomePageState extends State<SingleFightScreen> {
                         Container(
                           child: Text('XP ${playerNotifier.getHealph()}'),
                         ),
-                        if (!panelNotifier.getPanel().hidden &&
-                            panelNotifier.getPanel().kick == 0)
+                        if (!fightNotifier.getPanel().hidden &&
+                            fightNotifier.getPanel().kick == 0)
                           PanelView(
-                            panel: panelNotifier.getPanel(),
+                            panel: fightNotifier.getPanel(),
                           )
-                        else if ((!panelNotifier.getPanel().hidden &&
-                            panelNotifier.getPanel().kick != 0))
+                        else if ((!fightNotifier.getPanel().hidden &&
+                            fightNotifier.getPanel().kick != 0))
                           Container(
-                            child: Text('${panelNotifier.getPanel().kick}'),
+                            child: Text('${fightNotifier.getPanel().kick}'),
                           )
                         else
                           Container(
                             child: IconButton(
-                              onPressed: () => panelNotifier.showPanel(
+                              onPressed: () => fightNotifier.showPanel(
                                   context, playerNotifier, enemyNotifier),
                               icon: Icon(Icons.star_outline_rounded),
                             ),

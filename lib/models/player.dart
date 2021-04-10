@@ -11,5 +11,5 @@ class Player {
   List<String> paperDamage;
   List<String> scissorsDamage; */
   int health;
-  //int experience;
+  int experience;
 }
