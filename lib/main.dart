@@ -45,7 +45,7 @@ class MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MenuScreen(title: 'King of the Stone Jungle'),
+      home: MenuScreen(title: 'King of the Stone aaaaaaa'),
       routes: {
         "/menu": (context) => MenuScreen(),
         "/single_fight": (context) => SingleFightScreen(),

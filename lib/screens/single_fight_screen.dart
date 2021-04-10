@@ -72,11 +72,21 @@ class _MyHomePageState extends State<SingleFightScreen> {
                           )
                         else
                           Container(
-                            child: IconButton(
+                            child: InkWell(
+                                child: Container(
+                                    child: Text(
+                                        '${fightNotifier.getPanel().message}')),
+                                onTap: () => (fightNotifier
+                                            .getPanel()
+                                            .message ==
+                                        'Начать бой')
+                                    ? fightNotifier.showPanel(
+                                        context, playerNotifier, enemyNotifier)
+                                    : null), /* IconButton(
                               onPressed: () => fightNotifier.showPanel(
                                   context, playerNotifier, enemyNotifier),
                               icon: Icon(Icons.star_outline_rounded),
-                            ),
+                            ), */
                           ),
                         Container(
                           child: Text('XP ${enemyNotifier.getHealph()}'),

@@ -13,6 +13,7 @@ class FightNotifier with ChangeNotifier {
     _panel.kick = 0;
     _panel.enemyKick = 0;
     _panel.hidden = true;
+    _panel.message = 'Начать бой';
     //notifyListeners();
   }
 
@@ -24,7 +25,8 @@ class FightNotifier with ChangeNotifier {
       EnemyNotifier enemyNotifier) async {
     _panel.hidden = false;
     notifyListeners();
-    Timer timer = new Timer(new Duration(seconds: 3), () async {
+    Timer timer;
+    timer = new Timer(new Duration(seconds: 3), () async {
       debugPrint("бой...");
       _panel.hidden = true;
       Random random = new Random();
@@ -39,11 +41,26 @@ class FightNotifier with ChangeNotifier {
         victory(playerNotifier, enemyNotifier);
       else if (fightResult == 'defeat') defeat(playerNotifier, enemyNotifier);
       _panel.kick = 0;
-      if (playerNotifier.getHealph() <= 0)
-        Navigator.pushNamed(context, "/result");
-      else if (enemyNotifier.getHealph() <= 0)
-        Navigator.pushNamed(context, "/result");
+      if (playerNotifier.getHealph() <= 0) {
+        timer.cancel();
+        Navigator.pushNamed(context, "/result",
+            arguments: {'title': 'Поражение'});
+      } else if (enemyNotifier.getHealph() <= 0) {
+        timer.cancel();
+        Navigator.pushNamed(context, "/result", arguments: {'title': 'Победа'});
+      } else {
+        animationTime(context, playerNotifier, enemyNotifier);
+      }
       notifyListeners();
+    });
+  }
+
+  void animationTime(
+      context, PlayerNotifier playerNotifier, EnemyNotifier enemyNotifier) {
+    Timer timer = new Timer(new Duration(seconds: 3), () async {
+      _panel.hidden = false;
+      notifyListeners();
+      showPanel(context, playerNotifier, enemyNotifier);
     });
   }
 
@@ -77,15 +94,18 @@ class FightNotifier with ChangeNotifier {
 
   void victory(PlayerNotifier playerNotifier, EnemyNotifier enemyNotifier) {
     enemyNotifier.getDamage(25);
+    _panel.message = 'Победа';
     print('Победа');
   }
 
   void defeat(PlayerNotifier playerNotifier, EnemyNotifier enemyNotifier) {
     playerNotifier.getDamage(25);
+    _panel.message = 'Поражение';
     print('Поражение');
   }
 
   void deadHeat(PlayerNotifier playerNotifier, EnemyNotifier enemyNotifier) {
+    _panel.message = 'Ничья';
     print('Ничья');
   }
 

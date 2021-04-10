@@ -18,9 +18,12 @@ class _MyHomePageState extends State<ResultScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
+
+    if (arguments != null) print(arguments['title']);
     return Scaffold(
         appBar: AppBar(
-          title: Text("King of the Stone Jungle"),
+          title: Text(arguments['title']),
         ),
         body: Center(
           child: Row(
