@@ -113,7 +113,7 @@ class _MyHomePageState extends State<SingleFightScreen> {
                         ), */
                         child: InkWell(
                             child: Container(
-                                height: 128,
+                                height: 82,
                                 margin: EdgeInsets.all(12),
                                 child: Container(
                                     child: Image.asset(

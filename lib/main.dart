@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kingofthestonejungle/notifiers/player_notifier.dart';
@@ -40,21 +41,26 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'King of the Stone Jungle',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        textTheme: GoogleFonts.pressStart2pTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
-      home: MenuScreen(title: 'King of the Stone aaaaaaa'),
-      routes: {
-        "/menu": (context) => MenuScreen(),
-        "/single_fight": (context) => SingleFightScreen(),
-        "/result": (context) => ResultScreen(),
-      },
-    );
+    return WillPopScope(
+        onWillPop: () async {
+          Navigator.pushNamed(context, "/menu");
+          return true;
+        },
+        child: MaterialApp(
+          title: 'King of the Stone Jungle',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            textTheme: GoogleFonts.pressStart2pTextTheme(
+              Theme.of(context).textTheme,
+            ),
+          ),
+          home: MenuScreen(title: 'King of the Stone aaaaaaa'),
+          routes: {
+            "/menu": (context) => MenuScreen(),
+            "/single_fight": (context) => SingleFightScreen(),
+            "/result": (context) => ResultScreen(),
+          },
+        ));
   }
 }

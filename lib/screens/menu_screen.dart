@@ -67,10 +67,36 @@ class _MyHomePageState extends State<MenuScreen> {
                           child: Container(
                             child: Image.asset('assets/images/b3.png'),
                           ),
+                          onTap: () => showDialog<bool>(
+                            context: context,
+                            builder: (c) => AlertDialog(
+                              title: Text('Wow'),
+                              content: Text('Building...'),
+                              actions: [
+                                FlatButton(
+                                  child: Text('bliat'),
+                                  onPressed: () => Navigator.pop(c, true),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                         InkWell(
                           child: Container(
                             child: Image.asset('assets/images/b4.png'),
+                          ),
+                          onTap: () => showDialog<bool>(
+                            context: context,
+                            builder: (c) => AlertDialog(
+                              title: Text('Wow'),
+                              content: Text('Building...'),
+                              actions: [
+                                FlatButton(
+                                  child: Text('bliat'),
+                                  onPressed: () => Navigator.pop(c, true),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ])
