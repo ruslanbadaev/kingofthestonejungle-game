@@ -13,6 +13,7 @@ class FightNotifier with ChangeNotifier {
     _panel.kick = 0;
     _panel.enemyKick = 0;
     _panel.hidden = true;
+    _panel.fight = false;
     _panel.message = 'Начать бой';
     //notifyListeners();
   }
@@ -23,6 +24,7 @@ class FightNotifier with ChangeNotifier {
 
   void showPanel(context, PlayerNotifier playerNotifier,
       EnemyNotifier enemyNotifier) async {
+    _panel.fight = true;
     _panel.hidden = false;
     notifyListeners();
     Timer timer;
@@ -43,11 +45,13 @@ class FightNotifier with ChangeNotifier {
       _panel.kick = 0;
       if (playerNotifier.getHealph() <= 0) {
         timer.cancel();
-        Navigator.pushNamed(context, "/result",
-            arguments: {'title': 'Поражение'});
+        Navigator.pushNamed(context, "/result", arguments: {'title': 'defeat'});
+        _panel.fight = false;
       } else if (enemyNotifier.getHealph() <= 0) {
         timer.cancel();
-        Navigator.pushNamed(context, "/result", arguments: {'title': 'Победа'});
+        Navigator.pushNamed(context, "/result",
+            arguments: {'title': 'victory'});
+        _panel.fight = false;
       } else {
         animationTime(context, playerNotifier, enemyNotifier);
       }

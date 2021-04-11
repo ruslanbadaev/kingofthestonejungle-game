@@ -19,30 +19,63 @@ class _MyHomePageState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+/*         appBar: AppBar(
           title: Text("King of the Stone Jungle"),
-        ),
-        body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                height: 150,
-                width: 150,
-                color: Colors.red,
+        ), */
+        body: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/b5.png"),
+                fit: BoxFit.cover,
               ),
-              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                RaisedButton(
-                    onPressed: () =>
-                        Navigator.pushNamed(context, "/single_fight"),
-                    child: Text('Одиночный бой')),
-                RaisedButton(
-                    onPressed: () => print(123), child: Text('Турнир')),
-                RaisedButton(
-                    onPressed: () => print(123), child: Text('Мультиплеер')),
-              ])
-            ],
-          ),
-        ));
+            ),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 280,
+                    width: 280,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/r1.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Container(
+                      height: 230,
+                      width: 230,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/a11.png"),
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          child: Container(
+                            child: Image.asset('assets/images/bs1.png'),
+                          ),
+                          onTap: () =>
+                              Navigator.pushNamed(context, "/single_fight"),
+                        ),
+                        InkWell(
+                          child: Container(
+                            child: Image.asset('assets/images/b3.png'),
+                          ),
+                        ),
+                        InkWell(
+                          child: Container(
+                            child: Image.asset('assets/images/b4.png'),
+                          ),
+                        ),
+                      ])
+                ],
+              ),
+            )));
   }
 }

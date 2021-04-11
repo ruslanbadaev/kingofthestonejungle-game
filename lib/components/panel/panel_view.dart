@@ -30,7 +30,46 @@ class PanelViewState extends State<PanelView> {
     return Container(
       child: Row(
         children: [
-          IconButton(
+          InkWell(
+            child: Container(
+              height: 112,
+              width: 112,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/i1.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            onTap: () => fightNotifier.setKick(1),
+          ),
+          InkWell(
+            child: Container(
+              height: 112,
+              width: 112,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/i2.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            onTap: () => fightNotifier.setKick(2),
+          ),
+          InkWell(
+            child: Container(
+              height: 112,
+              width: 112,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/i3.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            onTap: () => fightNotifier.setKick(3),
+          ),
+/*           IconButton(
               icon: Icon(Icons.fingerprint_rounded),
               onPressed: () => fightNotifier.setKick(1)),
           IconButton(
@@ -38,7 +77,7 @@ class PanelViewState extends State<PanelView> {
               onPressed: () => fightNotifier.setKick(2)),
           IconButton(
               icon: Icon(Icons.fingerprint_rounded),
-              onPressed: () => fightNotifier.setKick(3)),
+              onPressed: () => fightNotifier.setKick(3)), */
         ],
       ),
     );

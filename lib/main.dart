@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kingofthestonejungle/notifiers/player_notifier.dart';
 import 'package:kingofthestonejungle/notifiers/enemy_notifier.dart';
 import 'package:kingofthestonejungle/notifiers/fight_notifier.dart';
@@ -44,6 +45,9 @@ class MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        textTheme: GoogleFonts.pressStart2pTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
       home: MenuScreen(title: 'King of the Stone aaaaaaa'),
       routes: {

@@ -25,10 +25,24 @@ class PlayerViewState extends State<PlayerView> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: InkWell(
-        child: Text('player ${player.health}'),
-      ),
-    );
+    return Container(
+        //color: Colors.red,
+        height: 250,
+        width: 250,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/f12.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: InkWell(
+            child: Padding(
+          padding: EdgeInsets.all(8),
+          child: Text(
+            'you',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.green),
+          ),
+        )));
   }
 }

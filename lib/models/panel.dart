@@ -4,4 +4,5 @@ class Panel {
   int enemyKick;
   String message;
   bool hidden;
+  bool fight;
 }
