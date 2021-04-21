@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kingofthestonejungle/notifiers/player_notifier.dart';
@@ -14,7 +15,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
-
+  SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
@@ -42,10 +43,23 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: () async {
-          Navigator.pushNamed(context, "/menu");
-          return true;
-        },
+        onWillPop: () => showDialog<bool>(
+              context: context,
+              builder: (c) => AlertDialog(
+                title: Text('Wow'),
+                content: Text('Aяe you going to the stall for vodka now?'),
+                actions: [
+                  FlatButton(
+                    child: Text('da bliat'),
+                    onPressed: () => SystemNavigator.pop(),
+                  ),
+                  FlatButton(
+                    child: Text('not now'),
+                    onPressed: () => Navigator.pop(c, true),
+                  ),
+                ],
+              ),
+            ),
         child: MaterialApp(
           title: 'King of the Stone Jungle',
           theme: ThemeData(
@@ -55,7 +69,7 @@ class MyAppState extends State<MyApp> {
               Theme.of(context).textTheme,
             ),
           ),
-          home: MenuScreen(title: 'King of the Stone aaaaaaa'),
+          home: MenuScreen(title: 'King of the Stone Jungle'),
           routes: {
             "/menu": (context) => MenuScreen(),
             "/single_fight": (context) => SingleFightScreen(),
