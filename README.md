@@ -1,17 +1,15 @@
-# kingofthestonejungle
+<h3> King of the Stone Jungle </h3>
+<b> simple game for android, ios, web </b>
 
-A new Flutter project.
 
-## Getting Started
+<div align="center">
+    <img src="/screenshots/Снимок экрана 2021-04-11 в 16.29.42.png" width="400px"</img> 
+</div>
 
-This project is a starting point for a Flutter application.
+<div align="center">
+    <img src="/screenshots/Снимок экрана 2021-04-11 в 16.30.01.png" width="400px"</img> 
+</div>
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
+<div align="center">
+    <img src="/screenshots/Снимок экрана 2021-04-11 в 16.30.54.png" width="400px"</img> 
+</div>
