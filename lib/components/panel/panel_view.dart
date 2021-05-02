@@ -69,15 +69,6 @@ class PanelViewState extends State<PanelView> {
             ),
             onTap: () => fightNotifier.setKick(3),
           ),
-/*           IconButton(
-              icon: Icon(Icons.fingerprint_rounded),
-              onPressed: () => fightNotifier.setKick(1)),
-          IconButton(
-              icon: Icon(Icons.fingerprint_rounded),
-              onPressed: () => fightNotifier.setKick(2)),
-          IconButton(
-              icon: Icon(Icons.fingerprint_rounded),
-              onPressed: () => fightNotifier.setKick(3)), */
         ],
       ),
     );
