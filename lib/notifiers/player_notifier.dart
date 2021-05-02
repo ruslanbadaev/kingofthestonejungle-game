@@ -7,7 +7,6 @@ class PlayerNotifier with ChangeNotifier {
   loadPlayer() {
     _player.health = 100;
     print(_player.health);
-    //notifyListeners();
   }
 
   void getDamage(int damage) {
