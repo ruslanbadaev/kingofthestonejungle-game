@@ -30,7 +30,6 @@ class EnemyViewState extends State<EnemyView> {
         alignment: Alignment.center,
         transform: Matrix4.rotationY(math.pi),
         child: Container(
-            //color: Colors.red,
             height: 250,
             width: 250,
             decoration: BoxDecoration(
