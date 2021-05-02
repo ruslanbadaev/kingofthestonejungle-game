@@ -26,7 +26,6 @@ class PlayerViewState extends State<PlayerView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        //color: Colors.red,
         height: 250,
         width: 250,
         decoration: BoxDecoration(
